@@ -1,0 +1,4 @@
+<workunit extends="com/rameses/seti2/templates/CrudList.xml" 
+        cols="objid,subject"
+         schemaName="sys_email_template">
+</workunit>

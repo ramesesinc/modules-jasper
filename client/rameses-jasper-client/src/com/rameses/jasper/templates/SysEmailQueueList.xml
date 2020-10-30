@@ -1,0 +1,11 @@
+<workunit extends="com/rameses/seti2/templates/CrudList.xml" 
+          schemaName="sys_email_queue" allowCreate="false" allowOpen="false"
+          cols="reportid,to,subject,dtsent,state,errmsg">
+    <invokers>
+        <!-- form actions -->        
+        <invoker type="listActions" caption="Resend" 
+                  action="reactivate" />
+    </invokers>
+    
+    <code class="com.rameses.jasper.models.EmailQueueListModel" />
+</workunit>

@@ -1,0 +1,6 @@
+<workunit extends="com/rameses/seti2/templates/FormReport.xml">
+    <invokers>
+          <invoker type="formActions" caption="Send Email" action="sendEmail" />
+    </invokers>          
+    <code class="com.rameses.jasper.models.JasperFormReportModel" />
+</workunit>

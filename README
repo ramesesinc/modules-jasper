@@ -1,0 +1,45 @@
+README
+
+Jasper Server Notes:
+
+
+generateReport = 
+This service will generate a pdf report and returns a tokenid. The report is stored in the output report path at /apps/server/output/. 
+
+
+Paths:
+reportOutputPath = where the generated reports will be saved. Usually at /apps/server/output/
+
+templatePath = where the reports are located. The template must include the module name i.e. obo/electricalpermit.jasper. Usually the reports located here are provided by the system (default reports).
+
+customPath = custom reports provided by the user. The system will locate folders from this folder first before the templatePath. To override a report from the template, name the report exactly as that in the template 
+
+The report service will need the ff. parameters:
+
+- 1. reportid = will be used by the interceptor
+- 2. modulename = will determine the folder where the report templates are located. This also coincides with the module's name
+- 3. template = the name of the report template. This must already be the compiled version or that ends in .jasper
+- 4. org = only specified when the report server is deployed in the cloud.
+
+A simple example.
+
+If URL = localhost:XXX/osiris3/json/enterprise/JasperReportService.generateReport?modulename=obo&reportid=electricalpermit 
+
+Interceptor as follows:
+
+
+@Service("Obo")
+
+@Before( pattern="JasperReportService.generateReport", eval="#{ args[0].modulename = 'obo' 
+	&& args[0].reportid.matches('electricalpermit') }"  )
+public void generateReport( def evt ) {
+	def args = evt.args[0];
+
+
+
+
+	args.template = args[0].reportid + ".jasper";
+}	
+
+
+

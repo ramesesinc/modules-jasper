@@ -1,0 +1,13 @@
+<workunit schemaName="sys_email_template">
+    <invokers>
+        <invoker type="sys_email_template:create" 
+                 caption="Email Template" action="create" index="1" target="popup"/>
+        
+        <invoker type="sys_email_template:open" 
+                 caption="Email Template" action="open" index="1" target="popup"/>        
+    </invokers>
+    <code class="com.rameses.jasper.models.EmailTemplateModel" />
+    <pages>
+        <page template="com.rameses.jasper.views.EmailTemplatePage" />
+    </pages>
+</workunit>
