@@ -65,4 +65,27 @@ class OboFormReportModel extends FormReportModel {
         MsgBox.alert("message queued for sending");
     }
     
+    def headerid;
+    public void afterReportData( Object data ) {
+        headerid = data.header;
+    }
+    
+    public Map getParameters() {
+        //get the base path of the report
+        String rname = getReportName();
+        String basePath = rname.substring( 0, rname.lastIndexOf("/") );
+        String headPath = basePath + "/headerinfo";
+        if( headerid ) {
+            if(! headerid.startsWith("/")) headerid = "/" + headerid;
+            headPath = basePath + headerid;
+        }
+        def props = new Properties();
+        def is = getClass().getClassLoader().getResourceAsStream( headPath );
+        if(is!=null) {
+            props.load( is );
+            is.close();            
+        }
+        return props;
+    }
+    
 }

@@ -20,6 +20,7 @@ public class EmailTemplatePage extends javax.swing.JPanel {
      */
     public EmailTemplatePage() {
         initComponents();
+       
     }
 
     /**

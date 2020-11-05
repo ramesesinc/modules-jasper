@@ -97,11 +97,21 @@ class JasperReportService  {
 			def srcFile = classLoader.getResource( template + ".jasper" );
 			def jr = JRLoader.loadObject( srcFile );
 			
-
 			// --------------------------------------------------------
 			// Load the reports
 			// --------------------------------------------------------
-			def xparams = [:];
+			//load the parameters from the headers
+			def props = new Properties();
+			def headerName = "headerinfo";
+			if( data.header ) headerName = data.header;
+
+			def url = classLoader.getResource( headerName );
+			if( url ) {
+				def is = url.openStream();
+				props.load( is );
+				is.close();				
+			}
+			def xparams = props ;
 			xparams.REPORT_CLASS_LOADER = classLoader;
 
 			def jasperFile = JasperFillManager.fillReport( jr, xparams, new ReportDataSource( data ) );
