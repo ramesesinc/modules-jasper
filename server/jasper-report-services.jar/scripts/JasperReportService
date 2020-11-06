@@ -15,7 +15,7 @@ class JasperReportService  {
 
 	String outputReportPath = "/apps/server/output/";
 	String templatePath = "/apps/server/templates/";
-	String customPath = "/apps/server/custom/";
+	String customPath = "/apps/server/templates/custom/";
 
 	@Service(dynamic=true)
 	def dSvc;
@@ -51,12 +51,9 @@ class JasperReportService  {
 			// setup the reports paths
 			// --------------------------------------------------------
 			def _basepath = templatePath;
-			def _customPath = null;
+			def _customPath = customPath;
 			if( org ) {
-				_customPath = customPath + org + "/templates/" 
-			}
-			else {
-				_customPath = customPath + "templates/" ;
+				_customPath = customPath + org + "/" 
 			}
 
 			// --------------------------------------------------------
