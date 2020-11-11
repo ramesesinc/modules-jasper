@@ -1,6 +1,6 @@
 <workunit extends="com/rameses/seti2/templates/CrudList.xml" 
           schemaName="sys_email_queue" allowCreate="false" allowOpen="false"
-          cols="reportid,to,subject,dtsent,state,errmsg">
+          cols="reportid,to,subject,connection,dtsent,state,errmsg">
     <invokers>
         <!-- form actions -->        
         <invoker type="listActions" caption="Resend" 

@@ -11,6 +11,7 @@
 		<field name="subject" />
 		<field name="message" />
 		<field name="errmsg" />
+		<field name="connection" />		
 	</element>
 
 </schema>

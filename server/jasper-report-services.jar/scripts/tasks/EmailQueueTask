@@ -18,7 +18,8 @@ class EmailQueueTask {
 		if( list ) {
 			list.each {
 				try {
-					jasperService.send( [reportid: it.reportid, refid: it.refid, to: it.to, subject: it.subject, message: it.message ] );
+					def objid = 
+					jasperService.send( [reportid: it.reportid, refid: it.refid, to: it.to, subject: it.subject, message: it.message, connection:it.connection ] );
 					emailQueue.find( [objid: it.objid ]).delete();
 				}
 				catch(exx) {
