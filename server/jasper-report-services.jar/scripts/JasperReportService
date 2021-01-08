@@ -61,6 +61,7 @@ class JasperReportService  {
 			// --------------------------------------------------------
 			def custFiles = new File(_customPath);
 			def files = new File(_basepath);
+
 			def filter = { f,fname -> fname.endsWith(".jar") } as FilenameFilter;
 			def urls = [];
 			custFiles.listFiles(filter).each {
