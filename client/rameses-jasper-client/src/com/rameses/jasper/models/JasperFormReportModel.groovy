@@ -18,7 +18,7 @@ class OboFormReportModel extends FormReportModel {
     def entity;
     
     boolean allowSave = false;
-    boolean allowPrint = false;
+    boolean allowPrint = true;
     
     public String getReportPath() {
         String rPath = invoker.properties.reportPath;
