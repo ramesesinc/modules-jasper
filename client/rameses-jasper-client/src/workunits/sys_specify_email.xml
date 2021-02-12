@@ -1,0 +1,10 @@
+<workunit>
+    <invokers>
+        <invoker type="sys_specify_email" 
+                 caption="Specify Email to send to" index="1" target="popup"/>
+    </invokers>
+    <code class="com.rameses.jasper.models.SpecifyEmailModel" />
+    <pages>
+        <page template="com.rameses.jasper.views.SpecifyEmailPage" />
+    </pages>
+</workunit>

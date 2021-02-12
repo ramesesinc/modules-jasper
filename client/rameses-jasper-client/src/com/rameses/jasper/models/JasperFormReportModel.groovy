@@ -17,7 +17,7 @@ class OboFormReportModel extends FormReportModel {
     
     def entity;
     
-    boolean allowSave = false;
+    boolean allowSave = true;
     boolean allowPrint = true;
     
     public String getReportPath() {
@@ -57,11 +57,19 @@ class OboFormReportModel extends FormReportModel {
         return super.preview();
     }    
     
+    def defaultEmail;
     void sendEmail() {
         def m = [:];
         m.reportid = reportId;
         m.refid = query.objid;
-        emailSvc.send( m  );
+        boolean pass = false;
+        def h = { o->
+            m.to = o.email;
+            pass = true;
+        }
+        Modal.show("sys_specify_email", [email:defaultEmail, handler:h] );
+        if(!pass) return null;
+        emailSvc.send( m );
         MsgBox.alert("message queued for sending");
     }
     
