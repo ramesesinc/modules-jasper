@@ -1,4 +1,4 @@
-package com.rameses.gov.etracs.obo.models;
+package com.rameses.jasper.models;
 
 import com.rameses.rcp.annotations.*;
 import com.rameses.rcp.common.*;
@@ -10,7 +10,7 @@ import com.rameses.util.*;
 import com.rameses.common.*;
 import com.rameses.rcp.constant.*;
 
-class OboFormReportModel extends FormReportModel {
+class JasperFormReportModel extends FormReportModel {
     
     @Service("JasperEmailQueueService")
     def emailSvc;
